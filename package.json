@@ -1,0 +1,15 @@
+{
+  "name": "alura-geek",
+  "version": "1.0.0",
+  "description": "Alura geek is an e-commerce website to showcase the best geek products.",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch data/db.json --port 3000"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.1"
+  },
+  "devDependencies": {},
+  "author": "Your Name",
+  "license": "ISC"
+}

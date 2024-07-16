@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AluraGeek</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .product-container {
+            max-height: 800px;
+            overflow-y: auto;
+        }
+        .min-h-screen {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .hamburger-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .desktop-form {
+                display: none;
+            }
+            .hamburger-menu {
+                display: block;
+                cursor: pointer;
+            }
+            main {
+                padding-bottom: 64px; 
+            }
+        }
+        #mobile-form {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 min-h-screen">
+    
+    <header class="bg-purple-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">❤️❤️❤️ AluraGeek</h1>
+            <div class="hamburger-menu" onclick="toggleMobileForm()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 flex-grow">
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-2/3 p-4">
+                <h2 class="text-2xl font-bold mb-4">Meus Produtos:</h2>
+                <div id="products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 product-container">
+                </div>
+                <div id="no-products" class="text-center text-gray-600 mt-4 hidden">Nenhum produto selecionado</div>
+            </div>
+
+            <div class="w-full md:w-1/3 p-4 desktop-form">
+                <h2 class="text-2xl font-bold mb-4">Adicionar Produto:</h2>
+                <form id="add-product-form" class="bg-white p-4 rounded shadow">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="name">Nome:</label>
+                        <input class="w-full px-3 py-2 border rounded" type="text" id="name" placeholder="Nome..." required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="price">Valor:</label>
+                        <input class="w-full px-3 py-2 border rounded" type="number" id="price" placeholder="Valor..." min="0" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="image">Imagem:</label>
+                        <input class="w-full px-3 py-2 border rounded" type="file" id="image" accept="image/*" required>
+                        <img id="image-preview" class="mt-4 hidden w-full h-32 object-cover"/>
+                    </div>
+                    <div class="flex justify-between">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Guardar</button>
+                        <button class="bg-gray-500 text-white px-4 py-2 rounded" type="reset">Limpar</button>
+                    </div>
+                    <div id="error-message" class="text-red-500 mt-4 hidden">Por favor, preencha todos os campos.</div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-purple-800 text-white p-4 mt-auto">
+        <div class="container mx-auto text-center">
+            <p>Desenvolvido por D'arc Mary | Alura Latam - 2024</p>
+        </div>
+    </footer>
+
+    <div id="mobile-form" class="fixed inset-0 bg-white p-4 hidden z-50">
+        <h2 class="text-2xl font-bold mb-4">Adicionar Produto:</h2>
+        <form id="mobile-add-product-form" class="bg-white p-4 rounded shadow">
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="mobile-name">Nome:</label>
+                <input class="w-full px-3 py-2 border rounded" type="text" id="mobile-name" placeholder="Nome..." required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="mobile-price">Valor:</label>
+                <input class="w-full px-3 py-2 border rounded" type="number" id="mobile-price" placeholder="Valor..." min="0" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2" for="mobile-image">Imagem:</label>
+                <input class="w-full px-3 py-2 border rounded" type="file" id="mobile-image" accept="image/*" required>
+                <img id="mobile-image-preview" class="mt-4 hidden w-full h-32 object-cover"/>
+            </div>
+            <div class="flex justify-between">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Guardar</button>
+                <button class="bg-gray-500 text-white px-4 py-2 rounded" type="reset" onclick="toggleMobileForm()">Cancelar</button>
+            </div>
+            <div id="mobile-error-message" class="text-red-500 mt-4 hidden">Por favor, preencha todos os campos.</div>
+        </form>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
